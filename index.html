@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon.sa FBM Fee Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>Amazon.sa FBM Fee Calculator</h1>
+      <form id="feeCalculator">
+        <div class="form-group">
+          <label for="sellingPrice">Selling Price + 12 (SAR):</label>
+          <input
+            type="number"
+            id="sellingPrice"
+            required
+            placeholder="سعر المنتج + 12 ريال"
+          />
+        </div>
+        <div class="form-group">
+          <label for="referralFee">Referral Fee 10 - 15(%):</label>
+          <input
+            type="number"
+            id="referralFee"
+            value="10"
+            required
+            placeholder="%الفئه السعريه للمنتج وبتبداء 10"
+          />
+        </div>
+        <div class="form-group">
+          <label for="closingFee">Closing Fee (SAR):</label>
+          <input
+            type="number"
+            id="closingFee"
+            value="0"
+            required
+            placeholder="رسوم الالغاء يفضل ان تكون صفر"
+          />
+        </div>
+        <div class="form-group">
+          <label for="shippingCost">Shipping Cost (SAR):</label>
+          <input
+            type="number"
+            id="shippingCost"
+            required
+            placeholder="22 تكلفه رسوم الشحن "
+          />
+        </div>
+        <div class="form-group">
+          <label for="cogs">Cost of Goods Sold (SAR):</label>
+          <input
+            type="number"
+            id="cogs"
+            required
+            placeholder="تكلفه المنتج عليك"
+          />
+        </div>
+        <button type="button" onclick="calculateFees()">Calculate</button>
+      </form>
+      <div class="result">
+        <h2>Fees: <span id="totalFees">0.00</span> SAR (عموله)</h2>
+        <h2>Profit: <span id="profit">0.00</span> SAR (الربح)</h2>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
