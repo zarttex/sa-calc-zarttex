@@ -1,12 +1,12 @@
 // script.js
 function calculateFees() {
-    const sellingPrice = parseFloat(document.getElementById('sellingPrice').value);
+    const sellingPrice = parseFloat(document.getElementById('sellingPrice').value + 12);
     const referralFeePercentage = parseFloat(document.getElementById('referralFee').value);
     const closingFee = parseFloat(document.getElementById('closingFee').value);
     const shippingCost = parseFloat(document.getElementById('shippingCost').value);
     const cogs = parseFloat(document.getElementById('cogs').value);
 
-    const referralFee = (sellingPrice + 12 * referralFeePercentage) / 100;
+    const referralFee = (sellingPrice * referralFeePercentage) / 100;
     const totalFees = referralFee + closingFee + shippingCost + cogs;
     const profit = sellingPrice - totalFees;
 
