@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon.sa FBM Fee Calculator</title>
+    <title>Amazon.eg FBM Fee Calculator</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="calculator">
-      <h1>Amazon.sa FBM Fee Calculator ZARTTEX</h1>
+      <h1>Amazon.eg FBM Fee Calculator ZARTTEX</h1>
       <form id="feeCalculator">
         <div class="form-group">
-          <label for="sellingPrice">Selling Price + 12 (SAR):</label>
+          <label for="sellingPrice">Selling Price + 26 (EGP):</label>
           <input
             type="number"
             id="sellingPrice"
             required
-            placeholder="سعر المنتج + 12 ريال"
+            placeholder="سعر المنتج + 26 جنيه"
           />
         </div>
         <div class="form-group">
@@ -30,7 +30,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="closingFee">Closing Fee (SAR):</label>
+          <label for="closingFee">Closing Fee (ِEGP):</label>
           <input
             type="number"
             id="closingFee"
@@ -40,16 +40,16 @@
           />
         </div>
         <div class="form-group">
-          <label for="shippingCost">Shipping Cost (SAR):</label>
+          <label for="shippingCost">Shipping Cost (EGP):</label>
           <input
             type="number"
             id="shippingCost"
             required
-            placeholder="22 تكلفه رسوم الشحن "
+            placeholder="55 تكلفه رسوم الشحن "
           />
         </div>
         <div class="form-group">
-          <label for="cogs">Cost of Goods Sold (SAR):</label>
+          <label for="cogs">Cost of Goods Sold (EGP):</label>
           <input
             type="number"
             id="cogs"
@@ -60,8 +60,8 @@
         <button type="button" onclick="calculateFees()">Calculate</button>
       </form>
       <div class="result">
-        <h2>Fees: <span id="totalFees">0.00</span> SAR (عموله)</h2>
-        <h2>Profit: <span id="profit">0.00</span> SAR (الربح)</h2>
+        <h2>Fees: <span id="totalFees">0.00</span> EGP (عموله)</h2>
+        <h2>Profit: <span id="profit">0.00</span> EGP (الربح)</h2>
       </div>
     </div>
     <script src="script.js"></script>
