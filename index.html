@@ -1,69 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon.eg FBM Fee Calculator</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>ZARTTEX Amazon.eg FBM Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: url('https://zarttex.com/uploads/slider/media_zarttex688faf8b9c63f.jpeg')
+          no-repeat center center/cover;
+      }
+    </style>
   </head>
-  <body>
-    <div class="calculator">
-      <h1>Amazon.eg FBM Fee Calculator ZARTTEX</h1>
-      <form id="feeCalculator">
-        <div class="form-group">
-          <label for="sellingPrice">Selling Price + 26 (EGP):</label>
+  <body class="min-h-screen flex items-center justify-center backdrop-blur-lg bg-black/50">
+    <div
+      class="w-full max-w-md mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-6 text-white"
+    >
+      <h1 class="text-2xl font-bold text-center mb-6 text-cyan-300">
+        💰 Amazon.eg FBM Fee Calculator
+        <span class="block text-sm text-cyan-100 mt-1">by ZARTTEX</span>
+      </h1>
+
+      <form id="feeCalculator" class="space-y-4">
+        <div>
+          <label class="block mb-1 text-sm">💵 سعر البيع:</label>
           <input
             type="number"
             id="sellingPrice"
             required
-            placeholder="سعر المنتج + 26 جنيه"
+            placeholder="اكتب سعر المنتج فقط"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
           />
         </div>
-        <div class="form-group">
-          <label for="referralFee">Referral Fee 10 - 15(%):</label>
+
+        <div>
+          <label class="block mb-1 text-sm">➕ الزيادة (+ جنيه):</label>
+          <input
+            type="number"
+            id="extraFee"
+            value="26"
+            required
+            placeholder="مثلاً 26"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
+          />
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm">% عمولة أمازون (Referral Fee):</label>
           <input
             type="number"
             id="referralFee"
             value="10"
             required
-            placeholder="%الفئه السعريه للمنتج وبتبداء 10"
+            placeholder="10 - 15%"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
           />
         </div>
-        <div class="form-group">
-          <label for="closingFee">Closing Fee (ِEGP):</label>
+
+        <div>
+          <label class="block mb-1 text-sm">🚫 رسوم الإغلاق (Closing Fee):</label>
           <input
             type="number"
             id="closingFee"
             value="0"
             required
-            placeholder="رسوم الالغاء يفضل ان تكون صفر"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
           />
         </div>
-        <div class="form-group">
-          <label for="shippingCost">Shipping Cost (EGP):</label>
+
+        <div>
+          <label class="block mb-1 text-sm">🚚 تكلفة الشحن:</label>
           <input
             type="number"
             id="shippingCost"
             required
-            placeholder="55 تكلفه رسوم الشحن "
+            placeholder="مثلاً 55"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
           />
         </div>
-        <div class="form-group">
-          <label for="cogs">Cost of Goods Sold (EGP):</label>
+
+        <div>
+          <label class="block mb-1 text-sm">🏷️ تكلفة المنتج عليك (COGS):</label>
           <input
             type="number"
             id="cogs"
             required
-            placeholder="تكلفه المنتج عليك"
+            placeholder="تكلفة المنتج عليك"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300"
           />
         </div>
-        <button type="button" onclick="calculateFees()">Calculate</button>
+
+        <button
+          type="button"
+          onclick="calculateFees()"
+          class="w-full bg-cyan-500 hover:bg-cyan-600 transition font-semibold rounded-xl py-2 mt-2"
+        >
+          احسب الآن
+        </button>
       </form>
-      <div class="result">
-        <h2>Fees: <span id="totalFees">0.00</span> EGP (عموله)</h2>
-        <h2>Profit: <span id="profit">0.00</span> EGP (الربح)</h2>
+
+      <div
+        class="mt-6 bg-white/10 border border-white/20 rounded-xl p-4 text-center"
+      >
+        <h2 class="text-lg font-semibold">
+          💸 إجمالي العمولة: <span id="totalFees" class="text-yellow-300">0.00</span> جنيه
+        </h2>
+        <h2 class="text-lg font-semibold mt-2">
+          📈 صافي الربح: <span id="profit" class="text-green-400">0.00</span> جنيه
+        </h2>
+        <h2 class="text-sm mt-3 text-gray-200">
+          💰 إجمالي سعر البيع بعد الإضافة:
+          <span id="finalPrice" class="text-cyan-300">0.00</span> جنيه
+        </h2>
       </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+      function calculateFees() {
+        const sellingPrice = parseFloat(document.getElementById('sellingPrice').value);
+        const extraFee = parseFloat(document.getElementById('extraFee').value);
+        const referralFeePercentage = parseFloat(document.getElementById('referralFee').value);
+        const closingFee = parseFloat(document.getElementById('closingFee').value);
+        const shippingCost = parseFloat(document.getElementById('shippingCost').value);
+        const cogs = parseFloat(document.getElementById('cogs').value);
+
+        if (
+          isNaN(sellingPrice) ||
+          isNaN(extraFee) ||
+          isNaN(referralFeePercentage) ||
+          isNaN(closingFee) ||
+          isNaN(shippingCost) ||
+          isNaN(cogs)
+        ) {
+          alert('من فضلك أدخل جميع القيم بشكل صحيح');
+          return;
+        }
+
+        const totalSellingPrice = sellingPrice + extraFee;
+        const referralFee = (totalSellingPrice * referralFeePercentage) / 100;
+        const totalFees = referralFee + closingFee + shippingCost + cogs;
+        const profit = totalSellingPrice - totalFees;
+
+        document.getElementById('totalFees').textContent = totalFees.toFixed(2);
+        document.getElementById('profit').textContent = profit.toFixed(2);
+        document.getElementById('finalPrice').textContent = totalSellingPrice.toFixed(2);
+      }
+    </script>
   </body>
 </html>
